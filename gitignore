@@ -1,0 +1,17 @@
+# git config --global core.excludesfile ~/.gitignore
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+
+config/database.yml
+*.DS_Store
+*.swp
+*.swo
+
+# for my config files
+vim/bundle/**/*
+bundler_stubs
+coverage
+node_modules

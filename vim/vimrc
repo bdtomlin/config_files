@@ -1,0 +1,94 @@
+let mapleader = ","
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+filetype plugin on
+set ignorecase
+set smartcase
+
+nmap <Leader>s :%s/
+
+"set relativenumber
+set number
+
+if exists('&inccommand')
+  set inccommand=split
+endif
+
+" Split Switching
+if has('nvim')
+  tnoremap <c-]> <C-\><C-n>
+  tnoremap <c-h> <c-\><c-n><c-w>h
+  tnoremap <c-j> <c-\><c-n><c-w>j
+  tnoremap <c-k> <c-\><c-n><c-w>k
+  tnoremap <c-l> <c-\><c-n><c-w>l
+  nnoremap <c-h> <c-w>h
+  nnoremap <c-j> <c-w>j
+  nnoremap <c-k> <c-w>k
+  nnoremap <c-l> <c-w>l
+endif
+
+
+" Minpac Plugins
+packadd minpac
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+  command! PackUpdate call minpac#update()
+  command! PackClean call minpac#clean()
+
+call minpac#add('tpope/vim-surround')
+
+call minpac#add('machakann/vim-highlightedyank')
+
+call minpac#add('tpope/vim-sensible')
+  if has('nvim')
+    let g:loaded_sensible=0
+  endif
+
+call minpac#add('ctrlpvim/ctrlp.vim')
+  nnoremap <C-f> :CtrlP<CR>
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+call minpac#add('kassio/neoterm')
+  " hide/close terminal
+  nnoremap <silent> ,th :call neoterm#close()<cr>
+  " clear terminal
+  nnoremap <silent> ,tl :call neoterm#clear()<cr>
+  " kills the current job (send a <c-c>)
+  nnoremap <silent> ,tc :call neoterm#kill()<cr>
+
+call minpac#add('janko-m/vim-test')
+  let test#strategy = "neoterm"
+  nmap <silent> <leader>t :TestFile<CR>
+  nmap <silent> <leader>T :TestNearest<CR>
+  nmap <silent> <leader>a :TestSuite<CR>
+  nmap <silent> <leader>l :TestLast<CR>
+  nmap <silent> <leader>g :TestVisit<CR>
+
+call minpac#add('jiangmiao/auto-pairs')
+
+call minpac#add('scrooloose/nerdtree')
+  nnoremap <leader>nn :NERDTreeToggle<CR>
+  nnoremap <leader>nf :NERDTreeFind<CR>
+
+call minpac#add('Xuyuanp/nerdtree-git-plugin')
+
+call minpac#add('jlanzarotta/bufexplorer')
+  " switch to prev buffer and delete buffer
+  " switched from. kill the buffer, not the split
+  nnoremap <leader>bb :ToggleBufExplorer<CR>
+  nnoremap <leader>bd :b#<bar>bd#<CR>
+
+" Colors...
+call minpac#add('dracula/vim', {'type': 'opt'})
+call minpac#add('icymind/NeoSolarized', {'type': 'opt'})
+call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
+call minpac#add('rakr/vim-one', {'type': 'opt'})
+
+syntax on
+set termguicolors
+
+set background=dark
+"color NeoSolarized
+"color dracula
+let g:one_allow_italics = 1
+color one
