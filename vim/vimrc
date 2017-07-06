@@ -1,10 +1,21 @@
 let mapleader = ","
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 filetype plugin on
+filetype plugin indent on
 set ignorecase
 set smartcase
+set nomodeline
+set cursorline
 
-nmap <Leader>s :%s/
+nnoremap <leader>s :%s/
+vnoremap <leader>c "*y
+nnoremap <leader>c "*y
+nnoremap <leader>v "*p
+vnoremap <leader>v "*p
+nnoremap <silent> ,/ :noh<cr>
+nnoremap <silent> ,, :b#<cr>
+nmap <c-o> o<esc>xk
+nmap <c-i> O<esc>xj
 
 "set relativenumber
 set number
@@ -43,18 +54,21 @@ call minpac#add('tpope/vim-sensible')
     let g:loaded_sensible=0
   endif
 
-call minpac#add('ctrlpvim/ctrlp.vim')
-  nnoremap <C-f> :CtrlP<CR>
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" call minpac#add('ctrlpvim/ctrlp.vim')
+"   nnoremap <C-f> :CtrlP<CR>
+"   set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+call minpac#add('wincent/command-t')
 
 call minpac#add('kassio/neoterm')
+  let g:neoterm_position='vertical'
   " hide/close terminal
-  nnoremap <silent> ,th :call neoterm#close()<cr>
+  nnoremap <silent> ,nt :Ttoggle<cr>
   " clear terminal
-  nnoremap <silent> ,tl :call neoterm#clear()<cr>
+  nnoremap <silent> ,nc :T clear<cr>
   " kills the current job (send a <c-c>)
-  nnoremap <silent> ,tc :call neoterm#kill()<cr>
+  nnoremap <silent> ,nk :Tclose!<cr>
 
 call minpac#add('janko-m/vim-test')
   let test#strategy = "neoterm"
@@ -78,17 +92,68 @@ call minpac#add('jlanzarotta/bufexplorer')
   nnoremap <leader>bb :ToggleBufExplorer<CR>
   nnoremap <leader>bd :b#<bar>bd#<CR>
 
-" Colors...
-call minpac#add('dracula/vim', {'type': 'opt'})
-call minpac#add('icymind/NeoSolarized', {'type': 'opt'})
-call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
-call minpac#add('rakr/vim-one', {'type': 'opt'})
+call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-rails')
+call minpac#add('tpope/vim-endwise')
 
+" Colors..............................................................
 syntax on
 set termguicolors
 
-set background=dark
-"color NeoSolarized
-"color dracula
-let g:one_allow_italics = 1
-color one
+call minpac#add('dracula/vim', {'type': 'opt'})
+  " color dracula
+call minpac#add('icymind/NeoSolarized', {'type': 'opt'})
+  " let g:neosolarized_contrast="high"
+  " let g:neosolarized_visibility="high"
+  " let g:neosolarized_termtrans=1
+  " let g:neosolarized_bold=1
+  " let g:neosolarized_underline=1
+  " let g:neosolarized_italic=1
+  " set background=dark
+  " color NeoSolarized
+call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
+call minpac#add('rakr/vim-one', {'type': 'opt'})
+  " set background=dark
+  " let g:one_allow_italics = 1
+  " color one
+call minpac#add('KeitaNakamura/neodark.vim', {'type': 'opt'})
+  " let g:neodark#background = '#1B202A'
+  " let g:neodark#solid_vertsplit = 1
+  " let g:neodark#use_custom_terminal_theme = 0
+  " colorscheme neodark
+  
+" call minpac#add('tyrannicaltoucan/vim-deep-space', {'type': 'opt'}) "***********
+  " let g:deepspace_italics=1
+  " colorscheme deep-space
+
+call minpac#add('bdtomlin/vim-deep-space', {'type': 'opt'}) "***********
+  let g:deepspace_italics=1
+  colorscheme deep-space
+
+call minpac#add('christophermca/meta5', {'type': 'opt'})
+  " colorscheme meta5
+
+call minpac#add('whatyouhide/vim-gotham', {'type': 'opt'})
+  " colorscheme gotham
+
+call minpac#add('gosukiwi/vim-atom-dark', {'type': 'opt'})
+  " colorscheme onehalfdark
+
+call minpac#add('jakwings/vim-colors', {'type': 'opt'})
+  " colorscheme garden
+  " colorscheme messy
+  " colorscheme moody
+
+call minpac#add('nightsense/seabird', {'type': 'opt'})
+  " colorscheme petrel
+
+call minpac#add('tyrannicaltoucan/vim-quantum', {'type': 'opt'})
+  " let g:quantum_black=1
+  " let g:quantum_italics=1
+  " let g:airline_theme='quantum'
+  " set background=dark
+  " colorscheme quantum
+
+call minpac#add('rakr/vim-two-firewatch', {'type': 'opt'})
+  " set background=dark
+  " colorscheme quantum

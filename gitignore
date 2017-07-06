@@ -15,3 +15,5 @@ vim/bundle/**/*
 bundler_stubs
 coverage
 node_modules
+
+vim/pack
