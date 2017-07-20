@@ -1,6 +1,7 @@
 let mapleader = ","
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 filetype plugin on
+set mouse=a
 filetype plugin indent on
 set ignorecase
 set smartcase
@@ -16,6 +17,7 @@ nnoremap <silent> ,/ :noh<cr>
 nnoremap <silent> ,, :b#<cr>
 nmap <c-o> o<esc>xk
 nmap <c-i> O<esc>xj
+inoremap <silent> jj <esc>
 
 "set relativenumber
 set number
@@ -54,21 +56,35 @@ call minpac#add('tpope/vim-sensible')
     let g:loaded_sensible=0
   endif
 
-" call minpac#add('ctrlpvim/ctrlp.vim')
-"   nnoremap <C-f> :CtrlP<CR>
-"   set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-"   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+call minpac#add('ctrlpvim/ctrlp.vim')
+  nnoremap <C-f> :CtrlP<CR>
+  nnoremap <C-b> :CtrlPBuffer<CR>
+  let g:ctrlp_match_current_file=1
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+  let g:ctrlp_prompt_mappings = {
+    \ 'PrtDeleteEnt()':       ['<c-d>']
+    \ }
 
-call minpac#add('wincent/command-t')
+call minpac#add('qpkorr/vim-bufkill')
+  nnoremap <leader>d :BD<CR>
+
+" call minpac#add('wincent/command-t')
+"   set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"   nnoremap <leader>f :CommandT<CR>
+"   nnoremap <leader>b :CommandTBuffer<CR>
 
 call minpac#add('kassio/neoterm')
+  " let g:neoterm_autoinsert = 1
+  " put terminal in insert mode when you switch to it
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
+  " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   let g:neoterm_position='vertical'
   " hide/close terminal
-  nnoremap <silent> ,nt :Ttoggle<cr>
+  nnoremap <silent> <leader>nt :Ttoggle<cr>
   " clear terminal
-  nnoremap <silent> ,nc :T clear<cr>
-  " kills the current job (send a <c-c>)
-  nnoremap <silent> ,nk :Tclose!<cr>
+  nnoremap <silent> <leader>nc :Tclose<cr>
 
 call minpac#add('janko-m/vim-test')
   let test#strategy = "neoterm"
@@ -86,16 +102,32 @@ call minpac#add('scrooloose/nerdtree')
 
 call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
-call minpac#add('jlanzarotta/bufexplorer')
+" call minpac#add('jlanzarotta/bufexplorer')
   " switch to prev buffer and delete buffer
   " switched from. kill the buffer, not the split
-  nnoremap <leader>bb :ToggleBufExplorer<CR>
-  nnoremap <leader>bd :b#<bar>bd#<CR>
+  " nnoremap <leader>bb :ToggleBufExplorer<CR>
+  " nnoremap <leader>bd :b#<bar>bd#<CR>
 
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-endwise')
+call minpac#add('ngmy/vim-rubocop')
 
+call minpac#add('roxma/nvim-completion-manager')
+call minpac#add('roxma/ncm-rct-complete')
+
+call minpac#add('mattn/emmet-vim')
+  let g:user_emmet_expandabbr_key = '<C-e>'
+  let g:user_emmet_next_key = '<C-n>'
+  let g:user_emmet_prev_key = '<C-p>'
+
+call minpac#add('SirVer/ultisnips')
+call minpac#add('honza/vim-snippets')
+call minpac#add('nathanaelkane/vim-indent-guides')
+  " let g:indent_guides_enable_on_vim_startup = 1 "default
+  let g:indent_guides_guide_size = 2
+  nmap<Leader>g :IndentGuidesToggle<CR>
+  
 " Colors..............................................................
 syntax on
 set termguicolors
