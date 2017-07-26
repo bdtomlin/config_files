@@ -8,6 +8,17 @@ set smartcase
 set nomodeline
 set cursorline
 
+" persistent undo
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
+" end
+
 nnoremap <leader>s :%s/
 vnoremap <leader>c "*y
 nnoremap <leader>c "*y
@@ -60,7 +71,7 @@ call minpac#add('ctrlpvim/ctrlp.vim')
   nnoremap <C-f> :CtrlP<CR>
   nnoremap <C-b> :CtrlPBuffer<CR>
   let g:ctrlp_match_current_file=1
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,_build,**/node_modules,deps     " MacOSX/Linux
   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
   let g:ctrlp_prompt_mappings = {
     \ 'PrtDeleteEnt()':       ['<c-d>']
@@ -77,6 +88,8 @@ call minpac#add('qpkorr/vim-bufkill')
 call minpac#add('kassio/neoterm')
   " let g:neoterm_autoinsert = 1
   " put terminal in insert mode when you switch to it
+  " don't close terminal
+  autocmd TermOpen * set bufhidden=hide
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
   " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -127,6 +140,8 @@ call minpac#add('nathanaelkane/vim-indent-guides')
   " let g:indent_guides_enable_on_vim_startup = 1 "default
   let g:indent_guides_guide_size = 2
   nmap<Leader>g :IndentGuidesToggle<CR>
+
+call minpac#add('elixir-lang/vim-elixir')
   
 " Colors..............................................................
 syntax on
