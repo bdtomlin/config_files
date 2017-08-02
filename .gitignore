@@ -4,3 +4,4 @@ vim/.netrwhist
 .DS_Store
 vim/bundle/
 vim/undo-dir
+vim/pack

@@ -13,7 +13,7 @@
 	tool = Kaleidoscope
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = nvim
 [alias]
   c = commit -m
   a = add
