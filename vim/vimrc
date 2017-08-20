@@ -106,9 +106,9 @@ call minpac#add('kassio/neoterm')
   " put terminal in insert mode when you switch to it
   " don't close terminal
   autocmd TermOpen * set bufhidden=hide
+  autocmd TermClose * bd!
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
-  " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   let g:neoterm_position='vertical'
   " hide/close terminal
   nnoremap <silent> <leader>nt :Ttoggle<cr>
