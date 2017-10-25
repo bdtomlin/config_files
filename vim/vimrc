@@ -158,6 +158,7 @@ call minpac#add('nathanaelkane/vim-indent-guides')
   nmap<Leader>g :IndentGuidesToggle<CR>
 
 call minpac#add('elixir-lang/vim-elixir')
+call minpac#add('posva/vim-vue')
 
 " Colors..............................................................
 syntax on
