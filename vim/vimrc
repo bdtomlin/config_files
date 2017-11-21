@@ -102,14 +102,17 @@ call minpac#add('qpkorr/vim-bufkill')
 "   nnoremap <leader>b :CommandTBuffer<CR>
 
 call minpac#add('kassio/neoterm')
-  " let g:neoterm_autoinsert = 1
-  " put terminal in insert mode when you switch to it
+  let g:neoterm_position='horizontal'
+  " Open terminal in horizontal split
+  command Tsp let g:neoterm_position='horizontal' | Tnew
+  " Open terminal in vertical split
+  command Tvs let g:neoterm_position='vertical' | Tnew | let g:neoterm_position='horizontal'
   " don't close terminal
   autocmd TermOpen * set bufhidden=hide
   autocmd TermClose * bd!
+  " put terminal in insert mode when you switch to it
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
-  let g:neoterm_position='vertical'
   " hide/close terminal
   nnoremap <silent> <leader>nt :Ttoggle<cr>
   " clear terminal
