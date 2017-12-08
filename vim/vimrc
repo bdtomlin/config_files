@@ -8,8 +8,12 @@ set smartcase
 set nomodeline
 set cursorline
 
-"netrw file browser
-let g:netrw_liststyle = 3
+" netrw file browser
+ let g:netrw_liststyle = 3
+ nnoremap <leader>e :Explore<cr>
+ nnoremap <leader>es :Sexplore<cr>
+ nnoremap <leader>ev :Vexplore<cr>
+
 
 " persistent undo
 if !isdirectory($HOME."/.vim")
@@ -142,10 +146,10 @@ call minpac#add('janko-m/vim-test')
 
 call minpac#add('jiangmiao/auto-pairs')
 
-" call minpac#add('scrooloose/nerdtree')
-"   nnoremap <leader>nn :NERDTreeToggle<CR>
-"   nnoremap <leader>nf :NERDTreeFind<CR>
-
+call minpac#add('scrooloose/nerdtree')
+  let NERDTreeHijackNetrw=1
+  nnoremap <leader>nn :NERDTreeToggle<CR>
+  nnoremap <leader>nf :NERDTreeFind<CR>
 call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
 " call minpac#add('jlanzarotta/bufexplorer')
@@ -238,5 +242,3 @@ call minpac#add('tyrannicaltoucan/vim-quantum', {'type': 'opt'})
 call minpac#add('rakr/vim-two-firewatch', {'type': 'opt'})
   " set background=dark
   " colorscheme quantum
-
-call minpac#add('tpope/vim-vinegar', {'type': 'opt'})
