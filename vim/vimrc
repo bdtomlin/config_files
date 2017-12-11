@@ -150,6 +150,7 @@ call minpac#add('scrooloose/nerdtree')
   let NERDTreeHijackNetrw=1
   nnoremap <leader>nn :NERDTreeToggle<CR>
   nnoremap <leader>nf :NERDTreeFind<CR>
+  let NERDTreeMapJumpNextSibling='<c-n>'
 call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
 " call minpac#add('jlanzarotta/bufexplorer')
