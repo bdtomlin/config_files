@@ -122,9 +122,9 @@ call minpac#add('qpkorr/vim-bufkill')
 call minpac#add('kassio/neoterm')
   let g:neoterm_position='horizontal'
   " Open terminal in horizontal split
-  command Tsp let g:neoterm_position='horizontal' | Tnew
+  command NeoTerms let g:neoterm_position='horizontal' | Ttoggle
   " Open terminal in vertical split
-  command Tvs let g:neoterm_position='vertical' | Tnew | let g:neoterm_position='horizontal'
+  command NeoTermv let g:neoterm_position='vertical' | Ttoggle
   " don't close terminal
   autocmd TermOpen * set bufhidden=hide
   autocmd TermClose * bd!
