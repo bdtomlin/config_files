@@ -148,6 +148,8 @@ call minpac#add('jiangmiao/auto-pairs')
 
 call minpac#add('scrooloose/nerdtree')
   let NERDTreeHijackNetrw=1
+  let NERDTreeMinimalUI=1
+  let NERDTreeCascadeSingleChildDir=0
   nnoremap <leader>nn :NERDTreeToggle<CR>
   nnoremap <leader>nf :NERDTreeFind<CR>
   let NERDTreeMapJumpNextSibling='<c-n>'
