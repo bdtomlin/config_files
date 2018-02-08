@@ -95,6 +95,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-surround')
 
 call minpac#add('machakann/vim-highlightedyank')
+call minpac#add('rhysd/vim-crystal')
 
 call minpac#add('tpope/vim-sensible')
   if has('nvim')
