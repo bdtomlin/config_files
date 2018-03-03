@@ -176,7 +176,7 @@ call minpac#add('mattn/emmet-vim')
   let g:user_emmet_prev_key = '<C-p>'
 
 call minpac#add('SirVer/ultisnips')
-let g:UltiSnipsSnippetsDir = '~/.vim/MyUltisnips'
+let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
 call minpac#add('honza/vim-snippets')
 call minpac#add('nathanaelkane/vim-indent-guides')
   " let g:indent_guides_enable_on_vim_startup = 1 "default
