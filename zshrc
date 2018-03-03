@@ -39,5 +39,5 @@ alias iex='rlwrap -a dummyarg iex'
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 
-
-
+# for crystal compiler
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
