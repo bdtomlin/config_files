@@ -177,6 +177,9 @@ call minpac#add('mattn/emmet-vim')
 
 call minpac#add('SirVer/ultisnips')
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
+
 call minpac#add('honza/vim-snippets')
 call minpac#add('nathanaelkane/vim-indent-guides')
   " let g:indent_guides_enable_on_vim_startup = 1 "default
