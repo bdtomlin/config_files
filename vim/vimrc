@@ -176,9 +176,9 @@ let g:deoplete#enable_at_startup = 1
 
 
 call minpac#add('mattn/emmet-vim')
-  " let g:user_emmet_expandabbr_key = '<C-e>'
-  " let g:user_emmet_next_key = '<C-n>'
-  " let g:user_emmet_prev_key = '<C-p>'
+  let g:user_emmet_expandabbr_key = '<C-e>'
+  let g:user_emmet_next_key = '<C-n>'
+  let g:user_emmet_prev_key = '<C-p>'
 
 call minpac#add('SirVer/ultisnips')
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
