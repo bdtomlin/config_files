@@ -14,7 +14,6 @@ set cursorline
  nnoremap <leader>es :Sexplore<cr>
  nnoremap <leader>ev :Vexplore<cr>
 
-
 " persistent undo
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
@@ -121,11 +120,10 @@ call minpac#add('qpkorr/vim-bufkill')
 "   nnoremap <leader>b :CommandTBuffer<CR>
 
 call minpac#add('kassio/neoterm')
-  let g:neoterm_position='horizontal'
-  " Open terminal in horizontal split
-  command NeoTerms let g:neoterm_position='horizontal' | Ttoggle
-  " Open terminal in vertical split
-  command NeoTermv let g:neoterm_position='vertical' | Ttoggle
+  set splitright
+  "
+  let g:neoterm_default_mod='rightbelow'
+  
   " don't close terminal
   autocmd TermOpen * set bufhidden=hide
   autocmd TermClose * bd!
@@ -133,7 +131,9 @@ call minpac#add('kassio/neoterm')
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
   " hide/close terminal
-  nnoremap <silent> <leader>nt :Ttoggle<cr>
+  nnoremap <silent> <c-t><c-t> :Ttoggle<cr>
+  nnoremap <silent> <c-t><c-s> :rightbelow Ttoggle<cr>
+  nnoremap <silent> <c-t><c-v> :vert Ttoggle<cr>
   " clear terminal
   nnoremap <silent> <leader>nc :Tclose<cr>
 
@@ -167,13 +167,18 @@ call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-endwise')
 call minpac#add('ngmy/vim-rubocop')
 
-call minpac#add('roxma/nvim-completion-manager')
-call minpac#add('roxma/ncm-rct-complete')
+call minpac#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call minpac#add('roxma/nvim-yarp')
+  call minpac#add('roxma/vim-hug-neovim-rpc')
+endif
+let g:deoplete#enable_at_startup = 1
+
 
 call minpac#add('mattn/emmet-vim')
-  let g:user_emmet_expandabbr_key = '<C-e>'
-  let g:user_emmet_next_key = '<C-n>'
-  let g:user_emmet_prev_key = '<C-p>'
+  " let g:user_emmet_expandabbr_key = '<C-e>'
+  " let g:user_emmet_next_key = '<C-n>'
+  " let g:user_emmet_prev_key = '<C-p>'
 
 call minpac#add('SirVer/ultisnips')
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
