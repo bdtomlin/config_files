@@ -8,11 +8,14 @@ set smartcase
 set nomodeline
 set cursorline
 
+" navigation
 " netrw file browser
  let g:netrw_liststyle = 3
- nnoremap <leader>e :Explore<cr>
- nnoremap <leader>es :Sexplore<cr>
- nnoremap <leader>ev :Vexplore<cr>
+ " nnoremap <leader>e :Explore<cr>
+ " nnoremap <leader>es :Sexplore<cr>
+ " nnoremap <leader>ev :Vexplore<cr>
+ autocmd FileType netrw setl bufhidden=wipe
+
 
 " persistent undo
 if !isdirectory($HOME."/.vim")
@@ -149,20 +152,14 @@ call minpac#add('janko-m/vim-test')
 
 call minpac#add('jiangmiao/auto-pairs')
 
-call minpac#add('scrooloose/nerdtree')
-  let NERDTreeHijackNetrw=1
-  let NERDTreeMinimalUI=1
-  let NERDTreeCascadeSingleChildDir=0
-  nnoremap <leader>nn :NERDTreeToggle<CR>
-  nnoremap <leader>nf :NERDTreeFind<CR>
-  let NERDTreeMapJumpNextSibling='<c-n>'
-call minpac#add('Xuyuanp/nerdtree-git-plugin')
-
-" call minpac#add('jlanzarotta/bufexplorer')
-  " switch to prev buffer and delete buffer
-  " switched from. kill the buffer, not the split
-  " nnoremap <leader>bb :ToggleBufExplorer<CR>
-  " nnoremap <leader>bd :b#<bar>bd#<CR>
+" call minpac#add('scrooloose/nerdtree')
+"   let NERDTreeHijackNetrw=1
+"   let NERDTreeMinimalUI=1
+"   let NERDTreeCascadeSingleChildDir=0
+"   nnoremap <leader>nn :NERDTreeToggle<CR>
+"   nnoremap <leader>nf :NERDTreeFind<CR>
+"   let NERDTreeMapJumpNextSibling='<c-n>'
+" call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-rails')
