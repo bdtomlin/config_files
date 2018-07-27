@@ -84,6 +84,8 @@ augroup Mkdir
 augroup END
 " end auto create directories when saving
 
+let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh', 'javascript', 'elixir']
+
 " Minpac Plugins
 packadd minpac
 call minpac#init()
