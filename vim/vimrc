@@ -10,11 +10,17 @@ set cursorline
 
 " navigation
 " netrw file browser
- let g:netrw_liststyle = 3
- " nnoremap <leader>e :Explore<cr>
- " nnoremap <leader>es :Sexplore<cr>
- " nnoremap <leader>ev :Vexplore<cr>
- autocmd FileType netrw setl bufhidden=wipe
+  let g:netrw_liststyle = 3
+  let g:netrw_banner = 0
+  let g:netrw_fastbrowse = 2 "heavier caching <c-l> to refresh
+  let g:netrw_list_hide = '\.gitkeep,\.DS_Store,\.bundle,\.*\.vscode,\.*\.file_extension'
+  " let g:netrw_browse_split=2
+  " let g:netrw_winsize = 25
+  " nnoremap <leader>e :Explore<cr>
+  " nnoremap <leader>es :Sexplore<cr>
+  " nnoremap <leader>ev :Vexplore<cr>
+  " autocmd FileType netrw setl bufhidden=wipe
+  nmap <leader>f :Explore %:h<cr>
 
 
 " persistent undo
