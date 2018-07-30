@@ -19,7 +19,7 @@ set cursorline
   " nnoremap <leader>e :Explore<cr>
   " nnoremap <leader>es :Sexplore<cr>
   " nnoremap <leader>ev :Vexplore<cr>
-  " autocmd FileType netrw setl bufhidden=wipe
+  autocmd FileType netrw setl bufhidden=wipe
   nmap <leader>f :Explore %:h<cr>
 
 
@@ -95,24 +95,18 @@ augroup END
 
 let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh', 'javascript', 'elixir']
 
-" Minpac Plugins
-packadd minpac
-call minpac#init()
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-  command! PackUpdate call minpac#update()
-  command! PackClean call minpac#clean()
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+Plug 'rhysd/vim-crystal'
 
-call minpac#add('tpope/vim-surround')
-
-call minpac#add('machakann/vim-highlightedyank')
-call minpac#add('rhysd/vim-crystal')
-
-call minpac#add('tpope/vim-sensible')
+Plug 'tpope/vim-sensible'
   if has('nvim')
     let g:loaded_sensible=0
   endif
 
-call minpac#add('ctrlpvim/ctrlp.vim')
+Plug 'ctrlpvim/ctrlp.vim'
   nnoremap <C-f> :CtrlP<CR>
   nnoremap <C-b> :CtrlPBuffer<CR>
   let g:ctrlp_match_current_file=1
@@ -122,19 +116,12 @@ call minpac#add('ctrlpvim/ctrlp.vim')
     \ 'PrtDeleteEnt()':       ['<c-d>']
     \ }
 
-call minpac#add('qpkorr/vim-bufkill')
+Plug 'qpkorr/vim-bufkill'
   nnoremap <leader>d :BD<CR>
 
-" call minpac#add('wincent/command-t')
-"   set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-"   nnoremap <leader>f :CommandT<CR>
-"   nnoremap <leader>b :CommandTBuffer<CR>
-
-call minpac#add('kassio/neoterm')
+Plug 'kassio/neoterm'
   set splitright
-  "
   let g:neoterm_default_mod='rightbelow'
-  
   " don't close terminal
   autocmd TermOpen * set bufhidden=hide
   autocmd TermClose * bd!
@@ -148,7 +135,7 @@ call minpac#add('kassio/neoterm')
   " clear terminal
   nnoremap <silent> <leader>nc :Tclose<cr>
 
-call minpac#add('janko-m/vim-test')
+Plug 'janko-m/vim-test'
   let test#strategy = "neoterm"
   nmap <silent> <leader>t :TestFile<CR>
   nmap <silent> <leader>T :TestNearest<CR>
@@ -156,7 +143,7 @@ call minpac#add('janko-m/vim-test')
   nmap <silent> <leader>l :TestLast<CR>
   nmap <silent> <leader>g :TestVisit<CR>
 
-call minpac#add('jiangmiao/auto-pairs')
+Plug 'jiangmiao/auto-pairs'
 
 " call minpac#add('scrooloose/nerdtree')
 "   let NERDTreeHijackNetrw=1
@@ -167,96 +154,47 @@ call minpac#add('jiangmiao/auto-pairs')
 "   let NERDTreeMapJumpNextSibling='<c-n>'
 " call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-endwise')
-call minpac#add('ngmy/vim-rubocop')
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'ngmy/vim-rubocop'
 
-call minpac#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call minpac#add('roxma/nvim-yarp')
-  call minpac#add('roxma/vim-hug-neovim-rpc')
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
 
 
-call minpac#add('mattn/emmet-vim')
+Plug 'mattn/emmet-vim'
   let g:user_emmet_expandabbr_key = '<C-e>'
   let g:user_emmet_next_key = '<C-n>'
   let g:user_emmet_prev_key = '<C-p>'
 
-call minpac#add('SirVer/ultisnips')
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 
-call minpac#add('honza/vim-snippets')
-call minpac#add('nathanaelkane/vim-indent-guides')
+Plug 'honza/vim-snippets'
+
+Plug 'nathanaelkane/vim-indent-guides'
   " let g:indent_guides_enable_on_vim_startup = 1 "default
   let g:indent_guides_guide_size = 2
   nmap<Leader>g :IndentGuidesToggle<CR>
 
-call minpac#add('elixir-lang/vim-elixir')
-call minpac#add('posva/vim-vue')
+Plug 'elixir-lang/vim-elixir'
+Plug 'posva/vim-vue'
 
 " Colors..............................................................
 syntax on
 set termguicolors
 
-call minpac#add('dracula/vim', {'type': 'opt'})
-  " color dracula
-call minpac#add('icymind/NeoSolarized', {'type': 'opt'})
-  " let g:neosolarized_contrast="high"
-  " let g:neosolarized_visibility="high"
-  " let g:neosolarized_termtrans=1
-  " let g:neosolarized_bold=1
-  " let g:neosolarized_underline=1
-  " let g:neosolarized_italic=1
-  " set background=dark
-  " color NeoSolarized
-call minpac#add('jacoborus/tender.vim', {'type': 'opt'})
-call minpac#add('rakr/vim-one', {'type': 'opt'})
-  " set background=dark
-  " let g:one_allow_italics = 1
-  " color one
-call minpac#add('KeitaNakamura/neodark.vim', {'type': 'opt'})
-  " let g:neodark#background = '#1B202A'
-  " let g:neodark#solid_vertsplit = 1
-  " let g:neodark#use_custom_terminal_theme = 0
-  " colorscheme neodark
-  
-" call minpac#add('tyrannicaltoucan/vim-deep-space', {'type': 'opt'}) "***********
-  " let g:deepspace_italics=1
-  " colorscheme deep-space
+Plug 'https://github.com/bdtomlin/vim-deep-space.git', {'type': 'opt'}
 
-call minpac#add('bdtomlin/vim-deep-space', {'type': 'opt'}) "***********
+call plug#end()
   let g:deepspace_italics=1
   colorscheme deep-space
-
-call minpac#add('christophermca/meta5', {'type': 'opt'})
-  " colorscheme meta5
-
-call minpac#add('whatyouhide/vim-gotham', {'type': 'opt'})
-  " colorscheme gotham
-
-call minpac#add('gosukiwi/vim-atom-dark', {'type': 'opt'})
-  " colorscheme onehalfdark
-
-call minpac#add('jakwings/vim-colors', {'type': 'opt'})
-  " colorscheme garden
-  " colorscheme messy
-  " colorscheme moody
-
-call minpac#add('nightsense/seabird', {'type': 'opt'})
-  " colorscheme petrel
-
-call minpac#add('tyrannicaltoucan/vim-quantum', {'type': 'opt'})
-  " let g:quantum_black=1
-  " let g:quantum_italics=1
-  " let g:airline_theme='quantum'
-  " set background=dark
-  " colorscheme quantum
-
-call minpac#add('rakr/vim-two-firewatch', {'type': 'opt'})
-  " set background=dark
-  " colorscheme quantum
