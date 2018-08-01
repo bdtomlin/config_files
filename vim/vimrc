@@ -14,6 +14,20 @@ set cursorline
   nmap <leader>f :Explore %:h<cr>
   let g:netrw_banner = 0
   let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+  " https://github.com/tpope/vim-vinegar/issues/13
+  set nohidden
+  augroup netrw_buf_hidden_fix
+      autocmd!
+
+      " Set all non-netrw buffers to bufhidden=hide
+      autocmd BufWinEnter *
+                  \  if &ft != 'netrw'
+                  \|     set bufhidden=hide
+                  \| endif
+
+  augroup end
+  " autocmd FileType netrw setl bufhidden=wipe
   " let g:netrw_list_hide = '\.gitkeep,.*\.DS_Store,\.bundle,\.*\.vscode,\.*\.file_extension'
   " let g:netrw_fastbrowse = 2 "heavier caching <c-l> to refresh
   " let g:netrw_browse_split=2
@@ -21,7 +35,6 @@ set cursorline
   " nnoremap <leader>e :Explore<cr>
   " nnoremap <leader>es :Sexplore<cr>
   " nnoremap <leader>ev :Vexplore<cr>
-  " autocmd FileType netrw setl bufhidden=wipe
 
 
 " persistent undo
