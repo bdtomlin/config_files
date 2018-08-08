@@ -44,3 +44,5 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google
 # for crystal compiler
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
+#flutter
+export PATH="$HOME/dev/tools/flutter/bin:$PATH"

@@ -10,23 +10,23 @@ set cursorline
 
 " navigation
 " netrw file browser
-  let g:netrw_liststyle = 3
+" let g:netrw_liststyle = 3
   nmap <leader>f :Explore %:h<cr>
   let g:netrw_banner = 0
   let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
   " https://github.com/tpope/vim-vinegar/issues/13
-  set nohidden
-  augroup netrw_buf_hidden_fix
-      autocmd!
+  " set nohidden
+  " augroup netrw_buf_hidden_fix
+  "     autocmd!
 
-      " Set all non-netrw buffers to bufhidden=hide
-      autocmd BufWinEnter *
-                  \  if &ft != 'netrw'
-                  \|     set bufhidden=hide
-                  \| endif
+  "     " Set all non-netrw buffers to bufhidden=hide
+  "     autocmd BufWinEnter *
+  "                 \  if &ft != 'netrw'
+  "                 \|     set bufhidden=hide
+  "                 \| endif
 
-  augroup end
+  " augroup end
   " autocmd FileType netrw setl bufhidden=wipe
   " let g:netrw_list_hide = '\.gitkeep,.*\.DS_Store,\.bundle,\.*\.vscode,\.*\.file_extension'
   " let g:netrw_fastbrowse = 2 "heavier caching <c-l> to refresh
@@ -111,10 +111,10 @@ let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh', '
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rhysd/vim-crystal'
+Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'tpope/vim-sensible'
   if has('nvim')
