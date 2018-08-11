@@ -114,7 +114,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rhysd/vim-crystal'
+
 Plug 'dart-lang/dart-vim-plugin'
+let dart_format_on_save = 1
 
 Plug 'tpope/vim-sensible'
   if has('nvim')
