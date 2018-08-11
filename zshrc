@@ -71,6 +71,7 @@ plugins=(
   git
   vi-mode
   dotenv
+  history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +111,10 @@ source $ZSH/oh-my-zsh.sh
 alias :q='exit'
 alias v='nvim'
 alias vim='nvim'
+
+# for history substring search with vi keys
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # enable my bins
 export PATH="$HOME/bin:$PATH"
