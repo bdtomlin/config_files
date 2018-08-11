@@ -210,8 +210,10 @@ Plug 'posva/vim-vue'
 syntax on
 set termguicolors
 
-Plug 'https://github.com/bdtomlin/vim-deep-space.git', {'type': 'opt'}
+" Plug 'https://github.com/bdtomlin/vim-deep-space.git', {'type': 'opt'}
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
-  let g:deepspace_italics=1
-  colorscheme deep-space
+
+colorscheme base16-default-dark
+
