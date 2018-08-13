@@ -8,12 +8,7 @@ export ZSH="/Users/bryantomlin/.oh-my-zsh"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="af-magic"
-# ZSH_THEME="gallois"
-# ZSH_THEME="garyblessington"
-# ZSH_THEME="muse"
-ZSH_THEME="sorin"
-# ZSH_THEME="jtriley"
+ZSH_THEME="bdtomlin"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -62,6 +57,7 @@ ZSH_THEME="sorin"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/config_files/zsh_custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
