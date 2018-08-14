@@ -11,38 +11,38 @@ set cursorline
 " navigation
 " netrw file browser
 " let g:netrw_liststyle = 3
-  nmap <leader>f :Explore %:h<cr>
-  let g:netrw_banner = 0
-  let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+nmap <leader>f :Explore %:h<cr>
+let g:netrw_banner = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-  " https://github.com/tpope/vim-vinegar/issues/13
-  " set nohidden
-  " augroup netrw_buf_hidden_fix
-  "     autocmd!
+" https://github.com/tpope/vim-vinegar/issues/13
+" set nohidden
+" augroup netrw_buf_hidden_fix
+"     autocmd!
 
-  "     " Set all non-netrw buffers to bufhidden=hide
-  "     autocmd BufWinEnter *
-  "                 \  if &ft != 'netrw'
-  "                 \|     set bufhidden=hide
-  "                 \| endif
+"     " Set all non-netrw buffers to bufhidden=hide
+"     autocmd BufWinEnter *
+"                 \  if &ft != 'netrw'
+"                 \|     set bufhidden=hide
+"                 \| endif
 
-  " augroup end
-  " autocmd FileType netrw setl bufhidden=wipe
-  " let g:netrw_list_hide = '\.gitkeep,.*\.DS_Store,\.bundle,\.*\.vscode,\.*\.file_extension'
-  " let g:netrw_fastbrowse = 2 "heavier caching <c-l> to refresh
-  " let g:netrw_browse_split=2
-  " let g:netrw_winsize = 25
-  " nnoremap <leader>e :Explore<cr>
-  " nnoremap <leader>es :Sexplore<cr>
-  " nnoremap <leader>ev :Vexplore<cr>
+" augroup end
+" autocmd FileType netrw setl bufhidden=wipe
+" let g:netrw_list_hide = '\.gitkeep,.*\.DS_Store,\.bundle,\.*\.vscode,\.*\.file_extension'
+" let g:netrw_fastbrowse = 2 "heavier caching <c-l> to refresh
+" let g:netrw_browse_split=2
+" let g:netrw_winsize = 25
+" nnoremap <leader>e :Explore<cr>
+" nnoremap <leader>es :Sexplore<cr>
+" nnoremap <leader>ev :Vexplore<cr>
 
 
 " persistent undo
 if !isdirectory($HOME."/.vim")
-    call mkdir($HOME."/.vim", "", 0770)
+  call mkdir($HOME."/.vim", "", 0770)
 endif
 if !isdirectory($HOME."/.vim/undo-dir")
-    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+  call mkdir($HOME."/.vim/undo-dir", "", 0700)
 endif
 set undodir=~/.vim/undo-dir
 set undofile
@@ -59,7 +59,7 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|rightbelow cwindow|redraw!
   nnoremap \ :Ag<SPACE>
 endif
 " End The Silver Searcher
@@ -101,9 +101,9 @@ endif
 augroup Mkdir
   autocmd!
   autocmd BufWritePre *
-    \ if !isdirectory(expand("<afile>:p:h")) |
+        \ if !isdirectory(expand("<afile>:p:h")) |
         \ call mkdir(expand("<afile>:p:h"), "p") |
-    \ endif
+        \ endif
 augroup END
 " end auto create directories when saving
 
@@ -119,46 +119,46 @@ Plug 'dart-lang/dart-vim-plugin'
 let dart_format_on_save = 1
 
 Plug 'tpope/vim-sensible'
-  if has('nvim')
-    let g:loaded_sensible=0
-  endif
+if has('nvim')
+  let g:loaded_sensible=0
+endif
 
 Plug 'ctrlpvim/ctrlp.vim'
-  nnoremap <C-f> :CtrlP<CR>
-  nnoremap <C-b> :CtrlPBuffer<CR>
-  let g:ctrlp_match_current_file=1
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,_build,**/node_modules,deps     " MacOSX/Linux
-  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-  let g:ctrlp_prompt_mappings = {
-    \ 'PrtDeleteEnt()':       ['<c-d>']
-    \ }
+nnoremap <C-f> :CtrlP<CR>
+nnoremap <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_match_current_file=1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,_build,**/node_modules,deps     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtDeleteEnt()':       ['<c-d>']
+      \ }
 
 Plug 'qpkorr/vim-bufkill'
-  nnoremap <leader>d :BD<CR>
+nnoremap <leader>d :BD<CR>
 
 Plug 'kassio/neoterm'
-  set splitright
-  let g:neoterm_default_mod='rightbelow'
-  " don't close terminal
-  autocmd TermOpen * set bufhidden=hide
-  autocmd TermClose * bd!
-  " put terminal in insert mode when you switch to it
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
-  " hide/close terminal
-  nnoremap <silent> <c-t><c-t> :Ttoggle<cr>
-  nnoremap <silent> <c-t><c-s> :rightbelow Ttoggle<cr>
-  nnoremap <silent> <c-t><c-v> :vert Ttoggle<cr>
-  " clear terminal
-  nnoremap <silent> <leader>nc :Tclose<cr>
+set splitright
+let g:neoterm_default_mod='rightbelow'
+" don't close terminal
+autocmd TermOpen * set bufhidden=hide
+autocmd TermClose * bd!
+" put terminal in insert mode when you switch to it
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
+" hide/close terminal
+nnoremap <silent> <c-t><c-t> :Ttoggle<cr>
+nnoremap <silent> <c-t><c-s> :rightbelow Ttoggle<cr>
+nnoremap <silent> <c-t><c-v> :vert Ttoggle<cr>
+" clear terminal
+nnoremap <silent> <leader>nc :Tclose<cr>
 
 Plug 'janko-m/vim-test'
-  let test#strategy = "neoterm"
-  nmap <silent> <leader>t :TestFile<CR>
-  nmap <silent> <leader>T :TestNearest<CR>
-  nmap <silent> <leader>a :TestSuite<CR>
-  nmap <silent> <leader>l :TestLast<CR>
-  nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "neoterm"
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>T :TestNearest<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -187,9 +187,9 @@ let g:deoplete#enable_at_startup = 1
 
 
 Plug 'mattn/emmet-vim'
-  let g:user_emmet_expandabbr_key = '<C-e>'
-  let g:user_emmet_next_key = '<C-n>'
-  let g:user_emmet_prev_key = '<C-p>'
+let g:user_emmet_expandabbr_key = '<C-e>'
+let g:user_emmet_next_key = '<C-n>'
+let g:user_emmet_prev_key = '<C-p>'
 
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
@@ -199,12 +199,25 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 Plug 'honza/vim-snippets'
 
 Plug 'nathanaelkane/vim-indent-guides'
-  " let g:indent_guides_enable_on_vim_startup = 1 "default
-  let g:indent_guides_guide_size = 2
-  nmap<Leader>g :IndentGuidesToggle<CR>
+" let g:indent_guides_enable_on_vim_startup = 1 "default
+let g:indent_guides_guide_size = 2
+nmap<Leader>g :IndentGuidesToggle<CR>
 
 Plug 'elixir-lang/vim-elixir'
 Plug 'posva/vim-vue'
+
+Plug 'w0rp/ale'
+" let g:ale_set_highlights = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 1
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'python': ['autopep8', 'yapf'],
+\}
 
 " Colors..............................................................
 syntax on
