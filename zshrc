@@ -66,7 +66,6 @@ ZSH_CUSTOM=~/config_files/zsh_custom
 plugins=(
   git
   vi-mode
-  dotenv
   history-substring-search
 )
 
@@ -107,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 alias :q='exit'
 alias v='nvim'
 alias vim='nvim'
+alias venv='source .venv/bin/activate'
+alias venva='virtualenv -p python3 .venv'
 
 # for history substring search with vi keys
 bindkey -M vicmd 'k' history-substring-search-up
@@ -144,3 +145,5 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 #flutter
 export PATH="$HOME/dev/tools/flutter/bin:$PATH"
+# autoenv from brew install autoenv
+source /usr/local/opt/autoenv/activate.sh

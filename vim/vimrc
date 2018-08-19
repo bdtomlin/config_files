@@ -219,6 +219,8 @@ let g:ale_fixers = {
 \   'python': ['autopep8', 'yapf'],
 \}
 
+Plug 'plytophogy/vim-virtualenv'
+
 " Colors..............................................................
 syntax on
 set termguicolors
@@ -230,4 +232,3 @@ call plug#end()
 
 let base16colorspace=256
 colorscheme base16-default-dark
-
