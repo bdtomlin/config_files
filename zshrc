@@ -106,8 +106,6 @@ source $ZSH/oh-my-zsh.sh
 alias :q='exit'
 alias v='nvim'
 alias vim='nvim'
-alias venv='source .venv/bin/activate'
-alias venva='virtualenv -p python3 .venv'
 
 # for history substring search with vi keys
 bindkey -M vicmd 'k' history-substring-search-up
@@ -125,9 +123,6 @@ unsetopt CORRECT
 # make neovim the default editor
 export EDITOR='nvim'
 export VISUAL='nvim'
-
-# rbenv
-eval "$(rbenv init -)"
 
 # iex readline (rlwrap)
 alias iex='rlwrap -a dummyarg iex'
@@ -147,3 +142,16 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$HOME/dev/tools/flutter/bin:$PATH"
 # autoenv from brew install autoenv
 source /usr/local/opt/autoenv/activate.sh
+
+# rbenv
+eval "$(rbenv init -)"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+# auto activate virtualenvs
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
