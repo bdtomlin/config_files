@@ -89,7 +89,7 @@ augroup Mkdir
 augroup END
 " end auto create directories when saving
 
-let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh', 'javascript', 'elixir']
+let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh', 'javascript', 'elixir', 'go']
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -204,6 +204,9 @@ let g:ale_fixers = {
 \}
 
 Plug 'plytophogy/vim-virtualenv'
+
+Plug 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
 
 " Colors..............................................................
 syntax on
