@@ -139,6 +139,7 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 # for go
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 export PATH="$HOME/go/bin:$PATH"
+export GOPATH="$HOME/go"
 
 # dart
 export PATH="$PATH":"$HOME/.pub-cache/bin"
